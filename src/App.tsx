@@ -106,6 +106,37 @@ const services = [
   }
 ];
 
+const testimonials = [
+  {
+    name: "Michele",
+    location: "8 anos no Airbnb",
+    text: "Fiquei simplesmente maravilhada com o apartamento. É exatamente como nas fotos, mas a energia positiva e acolhedora que existe lá nenhuma imagem consegue transmitir. Super recomendo! O condomínio é muito bem localizado, o pessoal que trabalha lá é super educado e prestativo. A piscina é uma delícia, a sauna e a academia são impecáveis. Acordar com o som do mar invadindo o apartamento foi um verdadeiro sonho. A vista é de tirar o fôlego! E preciso destacar o anfitrião Rodrigo: extremamente profissional, rápido e eficiente em tudo. Ele não é apenas um anfitrião — é praticamente um prefeito! Sem dúvidas, virou meu lugar favorito fora de casa. ✨🌊💛",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    name: "Drew",
+    location: "Nova York, Nova York",
+    text: "Rodrigo provided a very smooth and friendly check-in process to this apartment with amazing views from both sides. We had our trip extended by travel delays and this was the perfect place for us enjoy more time in this amazing city. Rodrigo was very attentive and went the extra mile helping us to use the washing machine (even bringing us detergent!) to do some much needed laundry. Was able to catch an amazing sunrise from the balcony which was one of my favorite moments of our stay. I highly recommend this spot!",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    name: "Thayna",
+    location: "6 anos no Airbnb",
+    text: "Foi incrível nós atendeu super bem, teve flexibilidade no horário para guardamos as malas, o Ap tem tudo de utenciloos, roupas de cama, toalhas, caixinha de som, tudo muito maravilhoso, deixou nos saímos mais tarde, liberando outro apartamento para nós tomar banho e se trocarmos. Muito obrigado pela estadia valeu muito apena 🤞!",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+  },
+  {
+    name: "Nailson",
+    location: "4 anos no Airbnb",
+    text: "Foi, sem dúvidas, uma das estadias mais perfeitas em que já fiquei. O apartamento é exatamente como nas fotos, muito limpo, organizado e aconchegante. A localização é ótima, perto de tudo, o que facilitou bastante nossos dias no Rio. A comunicação com o Rodrigo também foi excelente, sempre atencioso e disponível para ajudar. Eu e meus amigos adoramos a experiência e, com certeza, voltaremos em uma próxima oportunidade. Super recomendo!",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+  }
+];
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -527,6 +558,46 @@ export default function App() {
               />
               <div className="absolute inset-0 bg-yellow-400/10 mix-blend-multiply" />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="experiências" className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">O que dizem nossos hóspedes</h2>
+            <p className="text-xl text-slate-600">A satisfação de quem já viveu a experiência Nomad-E no Rio de Janeiro.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {testimonials.map((t, i) => (
+              <motion.div 
+                key={i}
+                {...fadeIn}
+                transition={{ delay: i * 0.1 }}
+                className="bg-slate-50 p-8 rounded-[2rem] flex flex-col justify-between hover:shadow-xl transition-all border border-transparent hover:border-yellow-400/20"
+              >
+                <div>
+                  <div className="flex items-center space-x-1 text-yellow-500 mb-6">
+                    {[...Array(t.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                  </div>
+                  <p className="text-slate-700 italic leading-relaxed mb-8">"{t.text}"</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <img 
+                    src={t.avatar} 
+                    alt={t.name} 
+                    className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <h4 className="font-bold text-slate-900">{t.name}</h4>
+                    <p className="text-xs text-slate-500 font-medium">{t.location}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
