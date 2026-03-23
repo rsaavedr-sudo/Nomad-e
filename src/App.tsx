@@ -22,39 +22,54 @@ import {
   Star
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { IMAGES } from "./constants/images";
 
 const properties = [
   {
     id: 0,
-    title: "Departamento vista para el mar",
-    type: "Penthouse Premium",
-    description: "Exclusivo departamento con vistas espectaculares al océano, diseñado para una experiencia inolvidable.",
-    capacity: "4 personas",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1080"
+    title: "Apartamento com vista para o mar",
+    type: "Espacio de Autor",
+    description: "Un refugio intelectual con estantería roja icónica, madera natural y una atmósfera cálida diseñada para la inspiración.",
+    capacity: "2-4 personas",
+    image: IMAGES.SALA_04,
+    gallery: [
+      IMAGES.SALA_04,
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1080",
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=1080",
+      "https://images.unsplash.com/photo-1536376074432-cd0258924831?auto=format&fit=crop&q=80&w=1080"
+    ]
   },
   {
     id: 1,
-    title: "Loft Moderno Ipanema",
+    title: "loft alto vidigal",
     type: "Loft",
-    description: "Espacio minimalista y sofisticado, ideal para estadías cortas en el corazón de Ipanema.",
+    description: "Espacio minimalista y sofisticado, ideal para estadías cortas en lo alto de Vidigal.",
     capacity: "2 personas",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1080"
+    image: IMAGES.LOFT_ALTO_VIDIGAL
   },
   {
     id: 2,
-    title: "Vista al Mar Copacabana",
-    type: "Departamento",
-    description: "Despierta con el sonido de las olas en este exclusivo departamento frente a la playa.",
-    capacity: "4 personas",
-    image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1080"
+    title: "apartamento com vista para o mar",
+    type: "Apartamento",
+    description: "Desperte com o som das ondas neste exclusivo apartamento em frente à praia.",
+    capacity: "4 pessoas",
+    image: IMAGES.VISTA_MAR_VIDIGAL
   },
   {
     id: 3,
-    title: "Loft Industrial Leblon",
+    title: "Loft Industrial",
     type: "Loft",
     description: "Diseño industrial con toques premium, a pasos de los mejores restaurantes de Río.",
     capacity: "2 personas",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&q=80&w=1080"
+    image: IMAGES.ESTUDIO_LEBLON
+  },
+  {
+    id: 4,
+    title: "Loft único en el Centro Histórico",
+    type: "Loft",
+    description: "Un espacio con historia y diseño contemporáneo en el corazón cultural de Río de Janeiro.",
+    capacity: "2 personas",
+    image: IMAGES.LOFT_CENTRO
   }
 ];
 
@@ -94,7 +109,7 @@ const services = [
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [valuation, setValuation] = useState(2500);
+  const [selectedProperty, setSelectedProperty] = useState<typeof properties[0] | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -102,12 +117,113 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (selectedProperty) {
+      window.scrollTo(0, 0);
+    }
+  }, [selectedProperty]);
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.6 }
   };
+
+  if (selectedProperty) {
+    return (
+      <div className="min-h-screen bg-white text-slate-900 font-sans">
+        <nav className="fixed w-full z-50 bg-white py-4 shadow-md">
+          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <button 
+              onClick={() => setSelectedProperty(null)}
+              className="flex items-center text-slate-600 hover:text-yellow-500 font-bold transition-colors"
+            >
+              <ArrowRight className="w-5 h-5 mr-2 rotate-180" /> Volver al inicio
+            </button>
+            <a href="#" className="text-2xl font-black tracking-tighter text-yellow-500">
+              NOMAD-E
+            </a>
+          </div>
+        </nav>
+
+        <main className="pt-24 pb-20">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5]"
+              >
+                <img 
+                  src={selectedProperty.image} 
+                  alt={selectedProperty.title} 
+                  className="w-full h-full object-cover brightness-110 contrast-105"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex flex-col justify-center"
+              >
+                <div className="text-xs font-bold uppercase tracking-widest text-yellow-500 mb-4">{selectedProperty.type}</div>
+                <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+                  {selectedProperty.title}
+                </h1>
+                <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                  {selectedProperty.description}
+                </p>
+                
+                <div className="grid grid-cols-2 gap-6 mb-10">
+                  <div className="bg-slate-50 p-6 rounded-2xl">
+                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Capacidad</div>
+                    <div className="text-xl font-bold">{selectedProperty.capacity}</div>
+                  </div>
+                  <div className="bg-slate-50 p-6 rounded-2xl">
+                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Ubicación</div>
+                    <div className="text-xl font-bold">Río de Janeiro</div>
+                  </div>
+                </div>
+
+                <button className="w-full bg-yellow-400 text-slate-900 py-5 rounded-2xl text-xl font-bold hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20">
+                  Consultar Disponibilidad
+                </button>
+              </motion.div>
+            </div>
+
+            <section className="mb-20">
+              <h2 className="text-3xl font-black mb-10">Galería de Fotos</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {(selectedProperty.gallery || [selectedProperty.image]).map((img, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="rounded-3xl overflow-hidden aspect-square shadow-lg hover:shadow-2xl transition-all cursor-zoom-in"
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Vista ${idx + 1}`} 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 brightness-110 contrast-105"
+                      referrerPolicy="no-referrer"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <footer className="bg-slate-900 text-white py-12 px-6 text-center">
+          <p className="text-slate-400 font-medium">© 2026 Nomad-E. Todos los derechos reservados.</p>
+        </footer>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-yellow-400 selection:text-slate-900">
@@ -163,24 +279,24 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#f8f7f4]">
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0f0e0a]">
         <div className="absolute inset-0 z-0 opacity-60">
           <img 
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2070" 
-            alt="Interior con vista al mar" 
-            className="w-full h-full object-cover"
+            src={IMAGES.SALA_04} 
+            alt="Interior ecléctico con estantería roja y ambiente cálido" 
+            className="w-full h-full object-cover brightness-110 contrast-105"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f8f7f4] via-[#f8f7f4]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0a] via-[#0f0e0a]/70 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-slate-900">
+          <div className="text-white">
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/20 border border-yellow-400/30 text-yellow-600 text-xs font-bold uppercase tracking-wider"
+                className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-wider"
               >
                 <Star className="w-3 h-3 fill-current" />
                 <span>Gestión Premium en Río de Janeiro</span>
@@ -212,7 +328,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed font-medium"
+              className="text-xl text-slate-300 mb-10 max-w-lg leading-relaxed"
             >
               En Nomad-E seleccionamos departamentos diferenciados y especiales en Río de Janeiro para ofrecerte experiencias verdaderamente inolvidables.
             </motion.p>
@@ -222,10 +338,10 @@ export default function App() {
               transition={{ delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all flex items-center justify-center shadow-lg shadow-yellow-400/20">
+              <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all flex items-center justify-center">
                 Explorar Departamentos <ArrowRight className="ml-2 w-5 h-5" />
               </button>
-              <button className="bg-slate-900 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10">
+              <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all">
                 Nuestra Experiencia
               </button>
             </motion.div>
@@ -239,9 +355,9 @@ export default function App() {
             className="relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10"
           >
             <img 
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1080" 
-              alt="Departamento vista para el mar" 
-              className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110"
+              src={IMAGES.SALA_04} 
+              alt="Apartamento com vista para o mar" 
+              className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110 brightness-110 contrast-105"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -255,7 +371,7 @@ export default function App() {
                 className="bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 flex flex-col items-center text-center"
               >
                 <span className="text-[10px] font-black text-[#003580] mb-1">Booking.com</span>
-                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center mb-1 shadow-lg shadow-yellow-400/20">
+                <div className="w-10 h-10 bg-nomad-red rounded-full flex items-center justify-center mb-1 shadow-lg shadow-nomad-red/20">
                   <Star className="w-5 h-5 text-white fill-current" />
                 </div>
                 <span className="text-[8px] font-bold text-slate-400 uppercase leading-none">Review Awards<br/>2026</span>
@@ -263,11 +379,11 @@ export default function App() {
             </div>
 
             <div className="absolute bottom-8 left-8 text-white">
-              <div className="flex items-center space-x-1 text-yellow-400 mb-2">
+              <div className="flex items-center space-x-1 text-nomad-red mb-2">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
-              <h3 className="text-2xl font-bold mb-1">Departamento vista para el mar</h3>
-              <p className="text-slate-300 text-sm">Vistas infinitas y diseño excepcional en la costa.</p>
+              <h3 className="text-2xl font-bold mb-1">Apartamento com vista para o mar</h3>
+              <p className="text-slate-300 text-sm">Cultura, diseño y calidez en cada rincón.</p>
             </div>
           </motion.div>
         </div>
@@ -297,19 +413,20 @@ export default function App() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {properties.map((prop, i) => (
               <motion.div 
                 key={i}
                 {...fadeIn}
                 transition={{ delay: i * 0.1 }}
                 className="group cursor-pointer"
+                onClick={() => setSelectedProperty(prop)}
               >
                 <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-6 shadow-lg">
                   <img 
                     src={prop.image} 
                     alt={prop.title} 
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 brightness-110 contrast-105"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
