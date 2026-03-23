@@ -28,9 +28,9 @@ const properties = [
   {
     id: 0,
     title: "Apartamento com vista para o mar",
-    type: "Espacio de Autor",
-    description: "Un refugio intelectual con estantería roja icónica, madera natural y una atmósfera cálida diseñada para la inspiración.",
-    capacity: "2-4 personas",
+    type: "Espaço de Autor",
+    description: "Um refúgio intelectual com estante vermelha icônica, madeira natural e uma atmosfera acolhedora projetada para inspiração.",
+    capacity: "2-4 pessoas",
     image: IMAGES.SALA_04,
     gallery: [
       IMAGES.SALA_04,
@@ -43,8 +43,8 @@ const properties = [
     id: 1,
     title: "loft alto vidigal",
     type: "Loft",
-    description: "Espacio minimalista y sofisticado, ideal para estadías cortas en lo alto de Vidigal.",
-    capacity: "2 personas",
+    description: "Espaço minimalista e sofisticado, ideal para estadias curtas no alto do Vidigal.",
+    capacity: "2 pessoas",
     image: IMAGES.LOFT_ALTO_VIDIGAL
   },
   {
@@ -59,16 +59,16 @@ const properties = [
     id: 3,
     title: "Loft Industrial",
     type: "Loft",
-    description: "Diseño industrial con toques premium, a pasos de los mejores restaurantes de Río.",
-    capacity: "2 personas",
+    description: "Design industrial com toques premium, a passos dos melhores restaurantes do Rio.",
+    capacity: "2 pessoas",
     image: IMAGES.ESTUDIO_LEBLON
   },
   {
     id: 4,
-    title: "Loft único en el Centro Histórico",
+    title: "Loft único no Centro Histórico",
     type: "Loft",
-    description: "Un espacio con historia y diseño contemporáneo en el corazón cultural de Río de Janeiro.",
-    capacity: "2 personas",
+    description: "Um espaço com história e design contemporâneo no coração cultural do Rio de Janeiro.",
+    capacity: "2 pessoas",
     image: IMAGES.LOFT_CENTRO
   }
 ];
@@ -76,33 +76,33 @@ const properties = [
 const services = [
   {
     icon: <Sparkles className="w-6 h-6" />,
-    title: "Limpieza Profesional",
-    desc: "Servicios de limpieza de grado hotelero entre cada estancia."
+    title: "Limpeza Profissional",
+    desc: "Serviços de limpeza de padrão hoteleiro entre cada estadia."
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: "Vetting de Huéspedes",
-    desc: "Verificamos a cada huésped para garantizar la seguridad de tu hogar."
+    title: "Vetting de Hóspedes",
+    desc: "Verificamos cada hóspede para garantir a segurança da sua casa."
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
-    title: "Precios Dinámicos",
-    desc: "Algoritmos avanzados para maximizar tus ingresos diarios."
+    title: "Preços Dinâmicos",
+    desc: "Algoritmos avançados para maximizar seus rendimentos diários."
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    title: "Soporte 24/7",
-    desc: "Atención al cliente y emergencias en todo momento."
+    title: "Suporte 24/7",
+    desc: "Atendimento ao cliente e emergências a todo momento."
   },
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Seguro y Protección",
-    desc: "Gestión de depósitos y coordinación de seguros."
+    title: "Seguro e Proteção",
+    desc: "Gestão de depósitos e coordenação de seguros."
   },
   {
     icon: <Camera className="w-6 h-6" />,
-    title: "Fotografía Profesional",
-    desc: "Hacemos que tu propiedad destaque en todas las plataformas."
+    title: "Fotografia Profissional",
+    desc: "Fazemos sua propriedade se destacar em todas as plataformas."
   }
 ];
 
@@ -139,7 +139,7 @@ export default function App() {
               onClick={() => setSelectedProperty(null)}
               className="flex items-center text-slate-600 hover:text-yellow-500 font-bold transition-colors"
             >
-              <ArrowRight className="w-5 h-5 mr-2 rotate-180" /> Volver al inicio
+              <ArrowRight className="w-5 h-5 mr-2 rotate-180" /> Voltar ao início
             </button>
             <a href="#" className="text-2xl font-black tracking-tighter text-yellow-500">
               NOMAD-E
@@ -178,23 +178,23 @@ export default function App() {
                 
                 <div className="grid grid-cols-2 gap-6 mb-10">
                   <div className="bg-slate-50 p-6 rounded-2xl">
-                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Capacidad</div>
+                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Capacidade</div>
                     <div className="text-xl font-bold">{selectedProperty.capacity}</div>
                   </div>
                   <div className="bg-slate-50 p-6 rounded-2xl">
-                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Ubicación</div>
-                    <div className="text-xl font-bold">Río de Janeiro</div>
+                    <div className="text-slate-400 text-xs font-bold uppercase mb-1">Localização</div>
+                    <div className="text-xl font-bold">Rio de Janeiro</div>
                   </div>
                 </div>
 
                 <button className="w-full bg-yellow-400 text-slate-900 py-5 rounded-2xl text-xl font-bold hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20">
-                  Consultar Disponibilidad
+                  Consultar Disponibilidade
                 </button>
               </motion.div>
             </div>
 
             <section className="mb-20">
-              <h2 className="text-3xl font-black mb-10">Galería de Fotos</h2>
+              <h2 className="text-3xl font-black mb-10">Galeria de Fotos</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {(selectedProperty.gallery || [selectedProperty.image]).map((img, idx) => (
                   <motion.div 
@@ -219,7 +219,7 @@ export default function App() {
         </main>
 
         <footer className="bg-slate-900 text-white py-12 px-6 text-center">
-          <p className="text-slate-400 font-medium">© 2026 Nomad-E. Todos los derechos reservados.</p>
+          <p className="text-slate-400 font-medium">© 2026 Nomad-E. Todos os direitos reservados.</p>
         </footer>
       </div>
     );
@@ -235,7 +235,7 @@ export default function App() {
           </a>
           
           <div className="hidden md:flex space-x-8 items-center">
-            {["Propiedades", "Experiencias", "Servicios", "Cómo funciona"].map((item) => (
+            {["Propriedades", "Experiências", "Serviços", "Como funciona"].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase().replace(" ", "-")}`} 
@@ -245,7 +245,7 @@ export default function App() {
               </a>
             ))}
             <button className="bg-yellow-400 text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-500 transition-all shadow-lg shadow-yellow-400/20">
-              Reserva ahora
+              Reserve agora
             </button>
           </div>
 
@@ -261,7 +261,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col space-y-4 md:hidden shadow-xl"
           >
-            {["Propiedades", "Experiencias", "Servicios", "Cómo funciona"].map((item) => (
+            {["Propriedades", "Experiências", "Serviços", "Como funciona"].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase().replace(" ", "-")}`} 
@@ -272,14 +272,14 @@ export default function App() {
               </a>
             ))}
             <button className="w-full bg-yellow-400 text-slate-900 py-4 rounded-xl font-bold">
-              Reserva ahora
+              Reserve agora
             </button>
           </motion.div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0f0e0a]">
+      <section className="relative min-h-screen flex flex-col pt-20 overflow-hidden bg-[#0f0e0a]">
         <div className="absolute inset-0 z-0 opacity-60">
           <img 
             src={IMAGES.SALA_04} 
@@ -290,7 +290,7 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0a] via-[#0f0e0a]/70 to-transparent" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-auto py-12">
           <div className="text-white">
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <motion.div
@@ -299,7 +299,7 @@ export default function App() {
                 className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-wider"
               >
                 <Star className="w-3 h-3 fill-current" />
-                <span>Gestión Premium en Río de Janeiro</span>
+                <span>Gestão Premium no Rio de Janeiro</span>
               </motion.div>
               
               <motion.div
@@ -322,7 +322,7 @@ export default function App() {
               className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]"
             >
               Lugares únicos. <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">Vistas espectaculares.</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">Vistas espetaculares, experiências inesquecíveis.</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -330,7 +330,7 @@ export default function App() {
               transition={{ delay: 0.3 }}
               className="text-xl text-slate-300 mb-10 max-w-lg leading-relaxed"
             >
-              En Nomad-E seleccionamos departamentos diferenciados y especiales en Río de Janeiro para ofrecerte experiencias verdaderamente inolvidables.
+              Na Nomad-E selecionamos apartamentos diferenciados e especiais no Rio de Janeiro para oferecer experiências verdadeiramente inesquecíveis.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -339,10 +339,10 @@ export default function App() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all flex items-center justify-center">
-                Explorar Departamentos <ArrowRight className="ml-2 w-5 h-5" />
+                Explorar Apartamentos <ArrowRight className="ml-2 w-5 h-5" />
               </button>
               <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all">
-                Nuestra Experiencia
+                Nossa Experiência
               </button>
             </motion.div>
           </div>
@@ -383,13 +383,13 @@ export default function App() {
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
               <h3 className="text-2xl font-bold mb-1">Apartamento com vista para o mar</h3>
-              <p className="text-slate-300 text-sm">Cultura, diseño y calidez en cada rincón.</p>
+              <p className="text-slate-300 text-sm">Cultura, design e aconchego em cada canto.</p>
             </div>
           </motion.div>
         </div>
 
         {/* Trust Bar */}
-        <div className="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-sm py-8 border-t border-white/10">
+        <div className="relative w-full bg-white/5 backdrop-blur-sm py-8 border-t border-white/10 z-20">
           <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 items-center opacity-50 grayscale invert">
             <span className="text-xl font-black tracking-tighter">AIRBNB</span>
             <span className="text-xl font-black tracking-tighter">BOOKING.COM</span>
@@ -401,15 +401,15 @@ export default function App() {
       </section>
 
       {/* Properties Portfolio - NOW PRIMARY */}
-      <section id="propiedades" className="py-24 px-6 bg-white">
+      <section id="propriedades" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Departamentos con Alma</h2>
-              <p className="text-xl text-slate-600">Nuestra selección exclusiva de espacios diseñados para ofrecer vistas espectaculares y confort absoluto.</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Apartamentos com Alma</h2>
+              <p className="text-xl text-slate-600">Nossa seleção exclusiva de espaços projetados para oferecer vistas espetaculares e conforto absoluto.</p>
             </div>
             <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold flex items-center hover:bg-slate-800 transition-all shadow-xl">
-              Ver todos los departamentos <ArrowRight className="ml-2 w-5 h-5" />
+              Ver todos os apartamentos <ArrowRight className="ml-2 w-5 h-5" />
             </button>
           </div>
 
@@ -434,7 +434,7 @@ export default function App() {
                     <div className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-2">{prop.type}</div>
                     <h3 className="text-2xl font-bold">{prop.title}</h3>
                     <p className="text-white/70 text-sm mt-2 flex items-center">
-                      <MapPin className="w-3 h-3 mr-1" /> Río de Janeiro
+                      <MapPin className="w-3 h-3 mr-1" /> Rio de Janeiro
                     </p>
                   </div>
                 </div>
@@ -449,29 +449,29 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <div className="text-4xl font-black mb-2">4.9/5</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Rating Huéspedes</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Avaliação de Hóspedes</div>
           </div>
           <div>
             <div className="text-4xl font-black mb-2">+10k</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Noches Reservadas</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Noites Reservadas</div>
           </div>
           <div>
             <div className="text-4xl font-black mb-2">100%</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Vistas Increíbles</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Vistas Incríveis</div>
           </div>
           <div>
             <div className="text-4xl font-black mb-2">24/7</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Atención VIP</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Atendimento VIP</div>
           </div>
         </div>
       </section>
 
       {/* Services Section - NOW SECONDARY */}
-      <section id="servicios" className="py-24 px-6 bg-slate-50">
+      <section id="serviços" className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Experiencias Nomad-E</h2>
-            <p className="text-xl text-slate-600">No solo gestionamos lugares, creamos momentos memorables con servicios de primer nivel.</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Experiências Nomad-E</h2>
+            <p className="text-xl text-slate-600">Não apenas gerenciamos lugares, criamos momentos memoráveis com serviços de alto padrão.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -494,16 +494,16 @@ export default function App() {
       </section>
 
       {/* How it Works - NOW SECONDARY */}
-      <section id="cómo-funciona" className="py-24 px-6">
+      <section id="como-funciona" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeIn}>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Cómo ser parte de la experiencia.</h2>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Como fazer parte da experiência.</h2>
               <div className="space-y-12">
                 {[
-                  { step: "01", title: "Elige tu Destino", desc: "Explora nuestra colección curada de departamentos con las mejores vistas de Río." },
-                  { step: "02", title: "Reserva Directa", desc: "Garantiza el mejor precio y atención personalizada reservando a través de Nomad-E." },
-                  { step: "03", title: "Disfruta el Viaje", desc: "Nosotros nos encargamos de cada detalle para que tu estadía sea perfecta." }
+                  { step: "01", title: "Escolha seu Destino", desc: "Explore nossa coleção curada de apartamentos com as melhores vistas do Rio." },
+                  { step: "02", title: "Reserva Direta", desc: "Garanta o melhor preço e atendimento personalizado reservando através da Nomad-E." },
+                  { step: "03", title: "Aproveite a Viagem", desc: "Nós cuidamos de cada detalhe para que sua estadia seja perfeita." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
                     <div className="text-4xl font-black text-yellow-500/20">{item.step}</div>
@@ -536,14 +536,14 @@ export default function App() {
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-yellow-400 via-yellow-400 to-amber-500 rounded-[40px] p-12 md:p-20 text-center text-slate-900 relative overflow-hidden shadow-2xl shadow-yellow-400/40">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl" />
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8">¿Listo para una experiencia inolvidable?</h2>
-            <p className="text-xl text-amber-900/80 mb-12 max-w-2xl mx-auto">Reserva tu estadía en uno de nuestros departamentos exclusivos y descubre Río desde una perspectiva única.</p>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8">Pronto para uma experiência inesquecível?</h2>
+            <p className="text-xl text-amber-900/80 mb-12 max-w-2xl mx-auto">Reserve sua estadia em um de nossos apartamentos exclusivos e descubra o Rio de uma perspectiva única.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="bg-slate-900 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-slate-800 transition-all shadow-xl">
-                Reservar Ahora
+                Reservar Agora
               </button>
               <button className="bg-white/20 backdrop-blur-sm text-slate-900 px-10 py-5 rounded-full text-xl font-bold hover:bg-white/30 transition-all border border-black/5">
-                Contactar Ventas
+                Contatar Vendas
               </button>
             </div>
           </div>
@@ -557,7 +557,7 @@ export default function App() {
             <div className="col-span-1 md:col-span-2">
               <h2 className="text-3xl font-black tracking-tighter mb-6 text-yellow-500">NOMAD-E</h2>
               <p className="text-slate-500 max-w-sm mb-8">
-                La plataforma líder en gestión de propiedades de corto plazo en Río de Janeiro. Tecnología y servicio local para dueños exigentes.
+                A plataforma líder em gestão de propriedades de curto prazo no Rio de Janeiro. Tecnologia e serviço local para proprietários exigentes.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-yellow-50 hover:text-yellow-600 transition-all"><Instagram className="w-5 h-5" /></a>
@@ -567,17 +567,17 @@ export default function App() {
             </div>
             
             <div>
-              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Compañía</h4>
+              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Empresa</h4>
               <ul className="space-y-4 font-semibold text-slate-600">
-                <li><a href="#" className="hover:text-yellow-600 transition-colors">Sobre nosotros</a></li>
-                <li><a href="#" className="hover:text-yellow-600 transition-colors">Servicios</a></li>
+                <li><a href="#" className="hover:text-yellow-600 transition-colors">Sobre nós</a></li>
+                <li><a href="#" className="hover:text-yellow-600 transition-colors">Serviços</a></li>
                 <li><a href="#" className="hover:text-yellow-600 transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-yellow-600 transition-colors">Carreras</a></li>
+                <li><a href="#" className="hover:text-yellow-600 transition-colors">Carreiras</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Contacto</h4>
+              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Contato</h4>
               <div className="space-y-4 text-slate-600 font-semibold">
                 <a href="tel:+552199999999" className="flex items-center hover:text-yellow-600 transition-colors">
                   <Phone className="w-5 h-5 mr-3 text-yellow-500" /> +55 21 9999-9999
@@ -587,17 +587,17 @@ export default function App() {
                 </a>
                 <p className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 text-yellow-500 shrink-0" />
-                  Ipanema, Río de Janeiro
+                  Ipanema, Rio de Janeiro
                 </p>
               </div>
             </div>
           </div>
           
           <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-slate-400 font-medium">© 2026 Nomad-E. Todos los derechos reservados.</p>
+            <p className="text-sm text-slate-400 font-medium">© 2026 Nomad-E. Todos os direitos reservados.</p>
             <div className="flex space-x-8 text-sm text-slate-400 font-medium">
-              <a href="#" className="hover:text-slate-900 transition-colors">Privacidad</a>
-              <a href="#" className="hover:text-slate-900 transition-colors">Términos</a>
+              <a href="#" className="hover:text-slate-900 transition-colors">Privacidade</a>
+              <a href="#" className="hover:text-slate-900 transition-colors">Termos</a>
               <a href="#" className="hover:text-slate-900 transition-colors">Cookies</a>
             </div>
           </div>
