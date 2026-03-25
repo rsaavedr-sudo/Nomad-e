@@ -332,34 +332,6 @@ export default function App() {
                 <Star className="w-3 h-3 fill-current" />
                 <span>Gestão Premium no Rio de Janeiro</span>
               </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
-                className="inline-flex items-center space-x-3 px-4 py-2 rounded-xl bg-white text-slate-900 shadow-xl"
-              >
-                <div className="w-8 h-8 bg-[#FF385C] text-white flex items-center justify-center rounded-lg shadow-inner">
-                  <Star className="w-5 h-5 fill-current" />
-                </div>
-                <div className="flex flex-col leading-tight">
-                  <span className="text-xs font-black text-[#FF385C]">Airbnb</span>
-                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Superhost 2026</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15 }}
-                className="inline-flex items-center space-x-3 px-4 py-2 rounded-xl bg-white text-slate-900 shadow-xl"
-              >
-                <div className="flex flex-col leading-tight">
-                  <span className="text-xs font-black text-[#003580]">Booking.com</span>
-                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Review Awards 2026</span>
-                </div>
-                <div className="w-8 h-8 bg-[#003580] text-white text-xs font-bold flex items-center justify-center rounded-lg shadow-inner">9.8</div>
-              </motion.div>
             </div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
