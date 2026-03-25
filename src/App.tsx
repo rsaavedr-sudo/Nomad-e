@@ -330,7 +330,7 @@ export default function App() {
                 className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-wider"
               >
                 <Star className="w-3 h-3 fill-current" />
-                <span>Gestão Premium no Rio de Janeiro</span>
+                <span>Gestão Premium no Rio de Janeiro e Fortaleza</span>
               </motion.div>
             </div>
             <motion.h1 
