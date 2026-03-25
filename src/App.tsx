@@ -75,34 +75,34 @@ const properties = [
 
 const services = [
   {
-    icon: <Sparkles className="w-6 h-6" />,
-    title: "Limpeza Profissional",
-    desc: "Serviços de limpeza de padrão hoteleiro entre cada estadia."
+    icon: <Camera className="w-6 h-6" />,
+    title: "Preparação do Imóvel",
+    desc: "Fotos profissionais e design de interiores focado em posicionamento premium."
   },
   {
-    icon: <Users className="w-6 h-6" />,
-    title: "Vetting de Hóspedes",
-    desc: "Verificamos cada hóspede para garantir a segurança da sua casa."
+    icon: <BarChart3 className="w-6 h-6" />,
+    title: "Gestão de Plataformas",
+    desc: "Criação e otimização de anúncios no Airbnb, Booking.com e Vrbo."
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
-    title: "Preços Dinâmicos",
-    desc: "Algoritmos avançados para maximizar seus rendimentos diários."
+    title: "Precificação Inteligente",
+    desc: "Pricing dinâmico baseado em algoritmos de demanda para maximizar o RevPAR."
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    title: "Suporte 24/7",
-    desc: "Atendimento ao cliente e emergências a todo momento."
+    title: "Atendimento ao Hóspede",
+    desc: "Suporte 24/7 e gestão completa de reservas e hospitalidade."
   },
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Seguro e Proteção",
-    desc: "Gestão de depósitos e coordenação de seguros."
+    title: "Operação e Manutenção",
+    desc: "Check-in, check-out, limpeza profissional e manutenção preventiva."
   },
   {
-    icon: <Camera className="w-6 h-6" />,
-    title: "Fotografia Profissional",
-    desc: "Fazemos sua propriedade se destacar em todas as plataformas."
+    icon: <Star className="w-6 h-6" />,
+    title: "Gestão de Reputação",
+    desc: "Monitoramento ativo de avaliações para garantir o status de Superhost."
   }
 ];
 
@@ -266,7 +266,7 @@ export default function App() {
           </a>
           
           <div className="hidden md:flex space-x-8 items-center">
-            {["Propriedades", "Experiências", "Serviços", "Como funciona"].map((item) => (
+            {["Propriedades", "Serviços", "Como funciona", "Experiências"].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase().replace(" ", "-")}`} 
@@ -276,7 +276,7 @@ export default function App() {
               </a>
             ))}
             <button className="bg-yellow-400 text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-500 transition-all shadow-lg shadow-yellow-400/20">
-              Reserve agora
+              Avalie seu imóvel
             </button>
           </div>
 
@@ -352,8 +352,8 @@ export default function App() {
               transition={{ delay: 0.2 }}
               className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]"
             >
-              Lugares únicos. <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">Vistas espetaculares, experiências inesquecíveis.</span>
+              Transformamos seu imóvel em um <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">ativo de alta performance.</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -361,7 +361,7 @@ export default function App() {
               transition={{ delay: 0.3 }}
               className="text-xl text-slate-300 mb-10 max-w-lg leading-relaxed"
             >
-              Na Nomad-E selecionamos apartamentos diferenciados e especiais no Rio de Janeiro para oferecer experiências verdadeiramente inesquecíveis.
+              Gestão profissional para aluguel de temporada com foco em rentabilidade, ocupação e experiência do hóspede.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -370,10 +370,10 @@ export default function App() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all flex items-center justify-center">
-                Explorar Apartamentos <ArrowRight className="ml-2 w-5 h-5" />
+                Avalie seu imóvel <ArrowRight className="ml-2 w-5 h-5" />
               </button>
               <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all">
-                Nossa Experiência
+                Fale conosco
               </button>
             </motion.div>
           </div>
@@ -436,8 +436,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Apartamentos com Alma</h2>
-              <p className="text-xl text-slate-600">Nossa seleção exclusiva de espaços projetados para oferecer vistas espetaculares e conforto absoluto.</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Transformamos imóveis em operações eficientes</h2>
+              <p className="text-xl text-slate-600">Maior ocupação, melhores avaliações e aumento consistente de receita para o seu patrimônio.</p>
             </div>
             <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold flex items-center hover:bg-slate-800 transition-all shadow-xl">
               Ver todos os apartamentos <ArrowRight className="ml-2 w-5 h-5" />
@@ -479,20 +479,20 @@ export default function App() {
       <section className="py-20 bg-gradient-to-r from-yellow-400 to-amber-400 text-slate-900">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-4xl font-black mb-2">4.9/5</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Avaliação de Hóspedes</div>
+            <div className="text-4xl font-black mb-2">+35%</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Aumento Médio de Receita</div>
           </div>
           <div>
-            <div className="text-4xl font-black mb-2">+10k</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Noites Reservadas</div>
+            <div className="text-4xl font-black mb-2">85%</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Taxa Média de Ocupação</div>
+          </div>
+          <div>
+            <div className="text-4xl font-black mb-2">4.9/5</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Nota Média nas Plataformas</div>
           </div>
           <div>
             <div className="text-4xl font-black mb-2">100%</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Vistas Incríveis</div>
-          </div>
-          <div>
-            <div className="text-4xl font-black mb-2">24/7</div>
-            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Atendimento VIP</div>
+            <div className="text-amber-900/60 text-sm font-bold uppercase tracking-wider">Transparência e Relatórios</div>
           </div>
         </div>
       </section>
@@ -501,8 +501,8 @@ export default function App() {
       <section id="serviços" className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Experiências Nomad-E</h2>
-            <p className="text-xl text-slate-600">Não apenas gerenciamos lugares, criamos momentos memoráveis com serviços de alto padrão.</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Soluções Operacionais Completas</h2>
+            <p className="text-xl text-slate-600">A Nomad-E vai além da gestão tradicional: integração com eventos, foco em nômades digitais e operação orientada a performance.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -529,12 +529,13 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeIn}>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Como fazer parte da experiência.</h2>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Como funciona nossa operação.</h2>
               <div className="space-y-12">
                 {[
-                  { step: "01", title: "Escolha seu Destino", desc: "Explore nossa coleção curada de apartamentos com as melhores vistas do Rio." },
-                  { step: "02", title: "Reserva Direta", desc: "Garanta o melhor preço e atendimento personalizado reservando através da Nomad-E." },
-                  { step: "03", title: "Aproveite a Viagem", desc: "Nós cuidamos de cada detalhe para que sua estadia seja perfeita." }
+                  { step: "01", title: "Avaliação do Ativo", desc: "Analisamos o potencial do seu imóvel e definimos a melhor estratégia de posicionamento." },
+                  { step: "02", title: "Preparação e Setup", desc: "Preparamos o espaço, realizamos fotos profissionais e otimizamos os anúncios nas plataformas." },
+                  { step: "03", title: "Gestão e Operação", desc: "Cuidamos de reservas, atendimento, limpeza e manutenção com foco em performance." },
+                  { step: "04", title: "Otimização Contínua", desc: "Monitoramos resultados e ajustamos preços dinamicamente para maximizar sua rentabilidade." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
                     <div className="text-4xl font-black text-yellow-500/20">{item.step}</div>
@@ -607,14 +608,14 @@ export default function App() {
         <div className="max-w-5xl mx-auto bg-gradient-to-br from-yellow-400 via-yellow-400 to-amber-500 rounded-[40px] p-12 md:p-20 text-center text-slate-900 relative overflow-hidden shadow-2xl shadow-yellow-400/40">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl" />
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8">Pronto para uma experiência inesquecível?</h2>
-            <p className="text-xl text-amber-900/80 mb-12 max-w-2xl mx-auto">Reserve sua estadia em um de nossos apartamentos exclusivos e descubra o Rio de uma perspectiva única.</p>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8">Se você possui um imóvel e quer gerar renda com aluguel de temporada, a Nomad-E cuida de tudo.</h2>
+            <p className="text-xl text-amber-900/80 mb-12 max-w-2xl mx-auto">Você mantém o controle do ativo, enquanto nós cuidamos da operação profissional.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="bg-slate-900 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-slate-800 transition-all shadow-xl">
-                Reservar Agora
+                Avalie seu imóvel
               </button>
               <button className="bg-white/20 backdrop-blur-sm text-slate-900 px-10 py-5 rounded-full text-xl font-bold hover:bg-white/30 transition-all border border-black/5">
-                Contatar Vendas
+                Fale conosco
               </button>
             </div>
           </div>
@@ -627,8 +628,11 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-1 md:col-span-2">
               <h2 className="text-3xl font-black tracking-tighter mb-6 text-yellow-500">NOMAD-E</h2>
-              <p className="text-slate-500 max-w-sm mb-8">
-                A plataforma líder em gestão de propriedades de curto prazo no Rio de Janeiro. Tecnologia e serviço local para proprietários exigentes.
+              <p className="text-slate-500 max-w-sm mb-4">
+                A Nomad-E representa uma nova geração de gestão de propriedades no Brasil. Unimos tecnologia, operação profissional e visão estratégica para transformar imóveis em ativos de alta performance.
+              </p>
+              <p className="text-slate-400 text-sm max-w-sm mb-8">
+                Mais do que gestão, entregamos estratégia, posicionamento e execução profissional para proprietários que buscam rentabilidade sem complexidade.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-yellow-50 hover:text-yellow-600 transition-all"><Instagram className="w-5 h-5" /></a>
