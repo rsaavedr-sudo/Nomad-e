@@ -97,7 +97,7 @@ const services = [
   {
     icon: <Shield className="w-6 h-6" />,
     title: "Operação e Manutenção",
-    desc: "Check-in, check-out, limpeza profissional e manutenção preventiva."
+    desc: "Gestão integral da operação, do enxoval à manutenção técnica preventiva."
   },
   {
     icon: <Star className="w-6 h-6" />,
@@ -558,6 +558,72 @@ export default function App() {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-yellow-400/10 mix-blend-multiply" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operation & Maintenance Highlight */}
+      <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              {...fadeIn}
+              className="relative rounded-[40px] overflow-hidden shadow-2xl aspect-square lg:aspect-auto lg:h-[600px] order-2 lg:order-1"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=1080" 
+                alt="Manutenção e Limpeza Profissional" 
+                className="w-full h-full object-cover brightness-90"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-yellow-400/5 mix-blend-multiply" />
+            </motion.div>
+
+            <motion.div {...fadeIn} className="order-1 lg:order-2">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-wider mb-6">
+                <Shield className="w-3 h-3" />
+                <span>Excelência Operacional</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">Operação e Manutenção Profissional</h2>
+              <p className="text-xl text-slate-300 mb-10 leading-relaxed">
+                Cuidamos integralmente da operação do imóvel, garantindo um padrão profissional em todos os detalhes para que você não tenha preocupações.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-yellow-400 font-bold mb-2 flex items-center">
+                    <CheckCircle2 className="w-4 h-4 mr-2" /> Gestão de Enxoval
+                  </h4>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Controle de qualidade e serviço de lavanderia contínuo para toalhas e roupas de cama impecáveis.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-yellow-400 font-bold mb-2 flex items-center">
+                    <CheckCircle2 className="w-4 h-4 mr-2" /> Manutenção Técnica
+                  </h4>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Cuidados preventivos e corretivos em móveis, equipamentos e infraestrutura do imóvel.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-yellow-400 font-bold mb-2 flex items-center">
+                    <CheckCircle2 className="w-4 h-4 mr-2" /> Higiene e Segurança
+                  </h4>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Dedetização periódica e inspeções técnicas para garantir a conservação e segurança do espaço.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-yellow-400 font-bold mb-2 flex items-center">
+                    <CheckCircle2 className="w-4 h-4 mr-2" /> Valorização do Ativo
+                  </h4>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Operação focada em manter o imóvel em perfeito estado, maximizando a satisfação dos hóspedes.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
