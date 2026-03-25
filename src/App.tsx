@@ -339,9 +339,24 @@ export default function App() {
                 transition={{ delay: 0.1 }}
                 className="inline-flex items-center space-x-3 px-4 py-2 rounded-xl bg-white text-slate-900 shadow-xl"
               >
+                <div className="w-8 h-8 bg-[#FF385C] text-white flex items-center justify-center rounded-lg shadow-inner">
+                  <Star className="w-5 h-5 fill-current" />
+                </div>
+                <div className="flex flex-col leading-tight">
+                  <span className="text-xs font-black text-[#FF385C]">Airbnb</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Superhost 2026</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15 }}
+                className="inline-flex items-center space-x-3 px-4 py-2 rounded-xl bg-white text-slate-900 shadow-xl"
+              >
                 <div className="flex flex-col leading-tight">
                   <span className="text-xs font-black text-[#003580]">Booking.com</span>
-                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Traveller Review Awards 2026</span>
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Review Awards 2026</span>
                 </div>
                 <div className="w-8 h-8 bg-[#003580] text-white text-xs font-bold flex items-center justify-center rounded-lg shadow-inner">9.8</div>
               </motion.div>
@@ -393,19 +408,32 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             
-            {/* Award Badge Overlay */}
-            <div className="absolute top-6 right-6">
+            {/* Award Badges Overlay */}
+            <div className="absolute top-6 right-6 flex flex-col space-y-3">
               <motion.div 
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", delay: 1 }}
-                className="bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 flex flex-col items-center text-center"
+                className="bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 flex flex-col items-center text-center w-20"
               >
-                <span className="text-[10px] font-black text-[#003580] mb-1">Booking.com</span>
+                <div className="w-10 h-10 bg-[#FF385C] rounded-full flex items-center justify-center mb-1 shadow-lg shadow-[#FF385C]/20">
+                  <Star className="w-5 h-5 text-white fill-current" />
+                </div>
+                <span className="text-[10px] font-black text-slate-900 uppercase tracking-tighter leading-none">Superhost</span>
+                <span className="text-[8px] font-bold text-slate-400 uppercase leading-none mt-1">Airbnb 2026</span>
+              </motion.div>
+
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", delay: 1.2 }}
+                className="bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 flex flex-col items-center text-center w-20"
+              >
+                <span className="text-[10px] font-black text-[#003580] mb-1 leading-none">Booking.com</span>
                 <div className="w-10 h-10 bg-nomad-red rounded-full flex items-center justify-center mb-1 shadow-lg shadow-nomad-red/20">
                   <Star className="w-5 h-5 text-white fill-current" />
                 </div>
-                <span className="text-[8px] font-bold text-slate-400 uppercase leading-none">Review Awards<br/>2026</span>
+                <span className="text-[8px] font-bold text-slate-400 uppercase leading-none mt-1">Review Awards<br/>2026</span>
               </motion.div>
             </div>
 
