@@ -266,7 +266,7 @@ export default function App() {
           </a>
           
           <div className="hidden md:flex space-x-8 items-center">
-            {["Propriedades", "Serviços", "Como funciona", "Experiências"].map((item) => (
+            {["Propriedades", "Serviços", "Como funciona", "Afiliados"].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase().replace(" ", "-")}`} 
@@ -292,7 +292,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col space-y-4 md:hidden shadow-xl"
           >
-            {["Propriedades", "Experiências", "Serviços", "Como funciona"].map((item) => (
+            {["Propriedades", "Serviços", "Como funciona", "Afiliados"].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase().replace(" ", "-")}`} 
@@ -303,7 +303,7 @@ export default function App() {
               </a>
             ))}
             <button className="w-full bg-yellow-400 text-slate-900 py-4 rounded-xl font-bold">
-              Reserve agora
+              Avalie seu imóvel
             </button>
           </motion.div>
         )}
@@ -665,6 +665,54 @@ export default function App() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Affiliates Section */}
+      <section id="afiliados" className="py-24 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white rounded-[40px] p-12 md:p-20 border border-slate-100 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+              <div>
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-wider mb-6">
+                  <Users className="w-3 h-3" />
+                  <span>Programa de Parceria</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Indique um proprietário e ganhe até R$ 500,00</h2>
+                <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                  Faça parte da nossa rede de parceiros Nomad-E. Ao indicar um imóvel que venha a ser gerido por nossa operação profissional, você recebe uma bonificação exclusiva após a primeira reserva.
+                </p>
+                <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all shadow-lg shadow-yellow-400/20">
+                  Quero indicar agora
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-8 rounded-3xl">
+                  <div className="text-3xl font-black text-yellow-500 mb-2">01.</div>
+                  <h4 className="font-bold mb-2">Indique</h4>
+                  <p className="text-slate-500 text-sm">Envie o contato de um proprietário com imóvel no Rio.</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-3xl">
+                  <div className="text-3xl font-black text-yellow-500 mb-2">02.</div>
+                  <h4 className="font-bold mb-2">Fechamento</h4>
+                  <p className="text-slate-500 text-sm">Nossa equipe avalia e fecha o contrato de gestão.</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-3xl">
+                  <div className="text-3xl font-black text-yellow-500 mb-2">03.</div>
+                  <h4 className="font-bold mb-2">Operação</h4>
+                  <p className="text-slate-500 text-sm">O imóvel entra em nossa rede de alta performance.</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-3xl">
+                  <div className="text-3xl font-black text-yellow-500 mb-2">04.</div>
+                  <h4 className="font-bold mb-2">Receba</h4>
+                  <p className="text-slate-500 text-sm">Ganhe sua bonificação após a primeira estadia concluída.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
