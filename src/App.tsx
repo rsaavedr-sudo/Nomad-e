@@ -19,7 +19,13 @@ import {
   Sparkles,
   BarChart3,
   ArrowRight,
-  Star
+  Star,
+  Check,
+  Zap,
+  ShieldCheck,
+  LayoutGrid,
+  Info,
+  ChevronRight
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { IMAGES } from "./constants/images";
@@ -141,6 +147,75 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState<typeof properties[0] | null>(null);
+  const [showPlans, setShowPlans] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
+
+  const plans = [
+    {
+      id: 'compact',
+      name: 'Nomad-E Compact',
+      size: 'Até 60 m²',
+      basePrice: 500,
+      adminPrice: 850,
+      color: 'emerald',
+      features: [
+        "3 faxinas mensais",
+        "Roupa de cama e banho",
+        "Kit básico de cozinha",
+        "Amenities de banheiro",
+        "Dedetização (2x ao ano)",
+        "Cartão de boas-vindas",
+        "Manutenção básica",
+        "Suporte ao hóspede 24h"
+      ]
+    },
+    {
+      id: 'standard',
+      name: 'Nomad-E Standard',
+      size: 'De 60 a 120 m²',
+      basePrice: 650,
+      adminPrice: 1000,
+      color: 'blue',
+      featured: true,
+      tag: 'Mais popular',
+      features: [
+        "3 faxinas mensais",
+        "Roupa de cama e banho",
+        "Kit básico de cozinha",
+        "Amenities de banheiro",
+        "Dedetização (2x ao ano)",
+        "Cartão de boas-vindas",
+        "Manutenção básica",
+        "Suporte ao hóspede 24h"
+      ]
+    },
+    {
+      id: 'plus',
+      name: 'Nomad-E Plus',
+      size: 'De 120 a 220 m²',
+      basePrice: 800,
+      adminPrice: 1150,
+      color: 'rose',
+      features: [
+        "3 faxinas mensais",
+        "Roupa de cama e banho",
+        "Kit básico de cozinha",
+        "Amenities de banheiro",
+        "Dedetização (2x ao ano)",
+        "Cartão de boas-vindas",
+        "Manutenção básica",
+        "Suporte ao hóspede 24h"
+      ]
+    }
+  ];
+
+  const adminFeatures = [
+    "Gestão de reservas (mensagens e aprovação)",
+    "Atendimento completo ao hóspede (24/7)",
+    "Coordenação operacional completa",
+    "Gestão de incidências e problemas",
+    "Gestão de avaliações (reviews)"
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -149,10 +224,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (selectedProperty) {
+    if (selectedProperty || showPlans) {
       window.scrollTo(0, 0);
     }
-  }, [selectedProperty]);
+  }, [selectedProperty, showPlans]);
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -172,7 +247,7 @@ export default function App() {
             >
               <ArrowRight className="w-5 h-5 mr-2 rotate-180" /> Voltar ao início
             </button>
-            <a href="#" className="text-2xl font-black tracking-tighter text-yellow-500">
+            <a href="#" onClick={(e) => { e.preventDefault(); setSelectedProperty(null); setShowPlans(false); }} className="text-2xl font-black tracking-tighter text-yellow-500">
               NOMAD-E
             </a>
           </div>
@@ -256,6 +331,219 @@ export default function App() {
     );
   }
 
+  if (showPlans) {
+    return (
+      <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-yellow-400 selection:text-slate-900">
+        <nav className="fixed w-full z-50 bg-white py-4 shadow-md">
+          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <button 
+              onClick={() => setShowPlans(false)}
+              className="flex items-center text-slate-600 hover:text-yellow-500 font-bold transition-colors"
+            >
+              <ArrowRight className="w-5 h-5 mr-2 rotate-180" /> Voltar ao início
+            </button>
+            <a href="#" onClick={(e) => { e.preventDefault(); setShowPlans(false); }} className="text-2xl font-black tracking-tighter text-yellow-500">
+              NOMAD-E
+            </a>
+          </div>
+        </nav>
+
+        <main className="pt-24">
+          <section className="py-24 px-6 bg-slate-50">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-6">Planos Nomad-E</h2>
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-700 mb-6 leading-tight">
+                  Transforme seu Airbnb em uma operação 5 estrelas — com ou sem administração.
+                </h3>
+                <p className="text-xl text-slate-600">
+                  Escolha o plano ideal para o seu imóvel e decida se quer operar sozinho ou com gestão completa. Sem comissões, sem complicação.
+                </p>
+              </div>
+
+              {/* Toggle Switch */}
+              <div className="flex flex-col items-center mb-16">
+                <div className="bg-white p-1.5 rounded-full shadow-sm border border-slate-200 flex items-center mb-4">
+                  <button 
+                    onClick={() => setIsAdminMode(false)}
+                    className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${!isAdminMode ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 hover:text-slate-900'}`}
+                  >
+                    Operação Própria
+                  </button>
+                  <button 
+                    onClick={() => setIsAdminMode(true)}
+                    className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center ${isAdminMode ? 'bg-yellow-400 text-slate-900 shadow-lg' : 'text-slate-500 hover:text-slate-900'}`}
+                  >
+                    <Zap className={`w-3.5 h-3.5 mr-2 ${isAdminMode ? 'fill-current' : ''}`} />
+                    Gestão Completa
+                  </button>
+                </div>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center">
+                  <Info className="w-3 h-3 mr-1.5" />
+                  {isAdminMode ? 'Inclui gestão digital e atendimento 24/7' : 'Você gerencia os canais, nós cuidamos da operação'}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                {plans.map((plan, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`relative bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all border-2 ${
+                      plan.featured ? "border-yellow-400 ring-4 ring-yellow-400/10 scale-105 z-10" : "border-transparent"
+                    }`}
+                  >
+                    {plan.tag && (
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-slate-900 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                        {plan.tag}
+                      </div>
+                    )}
+                    
+                    <div className="mb-8">
+                      <div className={`text-${plan.color}-500 font-bold uppercase tracking-widest text-[10px] mb-2`}>{plan.size}</div>
+                      <h4 className="text-2xl font-black mb-4">{plan.name}{isAdminMode ? ' Admin' : ''}</h4>
+                      <div className="flex items-baseline">
+                        <span className="text-4xl font-black">R${isAdminMode ? plan.adminPrice : plan.basePrice}</span>
+                        <span className="text-slate-400 font-medium ml-2">/mês</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-8 mb-10">
+                      <div>
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Serviços Operacionais</div>
+                        <ul className="space-y-3">
+                          {plan.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start text-slate-600 text-sm">
+                              <Check className={`w-4 h-4 mr-3 shrink-0 text-${plan.color}-500 mt-0.5`} />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {isAdminMode && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          className="pt-6 border-t border-slate-100"
+                        >
+                          <div className="text-[10px] font-black text-yellow-600 uppercase tracking-widest mb-4 flex items-center">
+                            <Zap className="w-3 h-3 mr-1.5 fill-current" />
+                            Gestão Digital Inclusa
+                          </div>
+                          <ul className="space-y-3">
+                            {adminFeatures.map((feature, idx) => (
+                              <li key={idx} className="flex items-start text-slate-700 font-medium text-sm">
+                                <Check className="w-4 h-4 mr-3 shrink-0 text-yellow-500 mt-0.5" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </div>
+
+                    <button className={`w-full py-5 rounded-2xl font-black text-lg transition-all ${
+                      plan.featured 
+                        ? "bg-yellow-400 text-slate-900 hover:bg-yellow-500 shadow-xl shadow-yellow-400/20" 
+                        : "bg-slate-900 text-white hover:bg-slate-800"
+                    }`}>
+                      Escolher plano
+                    </button>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Como Funciona Section */}
+              <div className="bg-white rounded-[3rem] p-12 md:p-20 border border-slate-100 shadow-xl mb-24">
+                <div className="text-center max-w-2xl mx-auto mb-16">
+                  <h2 className="text-4xl font-black tracking-tight mb-6">Como funciona?</h2>
+                  <p className="text-xl text-slate-600">
+                    Você escolhe o plano conforme o tamanho do imóvel. Depois, decide se quer operar por conta própria ou com administração completa.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="flex items-start space-x-6 p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+                      <LayoutGrid className="w-7 h-7 text-yellow-500" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">1. Escolha seu Plano</h4>
+                      <p className="text-slate-600 leading-relaxed">Selecione o pacote de serviços operacionais baseado na metragem do seu imóvel para garantir o padrão Nomad-E.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-6 p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+                      <ShieldCheck className="w-7 h-7 text-yellow-500" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">2. Defina a Gestão</h4>
+                      <p className="text-slate-600 leading-relaxed">Opere você mesmo através das plataformas ou adicione nossa administração para uma gestão 360º e liberdade total.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Por que Nomad-E Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-10">Por que Nomad-E?</h2>
+                  <div className="space-y-6">
+                    {[
+                      "Sem comissão sobre reservas",
+                      "Operação padronizada tipo hotel",
+                      "Redução do esforço operacional",
+                      "Experiência consistente para o hóspede",
+                      "Mais controle, menos fricção"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center space-x-4 group">
+                        <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                          <Check className="w-5 h-5 text-slate-900" />
+                        </div>
+                        <span className="text-xl font-bold text-slate-800">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="bg-slate-900 rounded-[3rem] p-12 text-white relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-black mb-6 leading-tight">Pronto para transformar seu Airbnb?</h3>
+                    <p className="text-slate-400 mb-10 text-lg">Junte-se aos proprietários que já profissionalizaram sua operação com a Nomad-E e aumentaram sua rentabilidade.</p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-2xl font-black text-lg hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20 flex items-center justify-center">
+                        Começar agora <ChevronRight className="ml-2 w-5 h-5" />
+                      </button>
+                      <a href="#contato" className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-black text-lg hover:border-white/40 transition-all border border-white/10 flex items-center justify-center">
+                        Falar com a Nomad-E
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer className="bg-slate-900 text-white py-12 px-6 text-center">
+          <p className="text-slate-400 font-medium">© 2026 Nomad-E. Todos os direitos reservados.</p>
+        </footer>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-yellow-400 selection:text-slate-900">
       {/* Navigation */}
@@ -266,15 +554,33 @@ export default function App() {
           </a>
           
           <div className="hidden md:flex space-x-8 items-center">
-            {["Propriedades", "Serviços", "Como funciona", "Afiliados"].map((item) => (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase().replace(" ", "-")}`} 
-                className={`text-sm font-semibold hover:text-yellow-500 transition-colors ${scrolled ? "text-slate-600" : "text-white"}`}
-              >
-                {item}
-              </a>
-            ))}
+            {["Propriedades", "Planos", "Serviços", "Como funciona", "Afiliados", "Contato"].map((item) => {
+              if (item === "Planos") {
+                return (
+                  <button 
+                    key={item} 
+                    onClick={() => {
+                      setShowPlans(true);
+                      setSelectedProperty(null);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`text-sm font-semibold hover:text-yellow-500 transition-colors ${scrolled ? "text-slate-600" : "text-white"}`}
+                  >
+                    {item}
+                  </button>
+                );
+              }
+              return (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase().replace(" ", "-")}`} 
+                  onClick={() => setShowPlans(false)}
+                  className={`text-sm font-semibold hover:text-yellow-500 transition-colors ${scrolled ? "text-slate-600" : "text-white"}`}
+                >
+                  {item}
+                </a>
+              );
+            })}
             <button className="bg-yellow-400 text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-500 transition-all shadow-lg shadow-yellow-400/20">
               Avalie seu imóvel
             </button>
@@ -292,16 +598,36 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col space-y-4 md:hidden shadow-xl"
           >
-            {["Propriedades", "Serviços", "Como funciona", "Afiliados"].map((item) => (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase().replace(" ", "-")}`} 
-                className="text-lg font-semibold text-slate-900"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
+            {["Propriedades", "Planos", "Serviços", "Como funciona", "Afiliados", "Contato"].map((item) => {
+              if (item === "Planos") {
+                return (
+                  <button 
+                    key={item} 
+                    onClick={() => {
+                      setShowPlans(true);
+                      setSelectedProperty(null);
+                      setIsMenuOpen(false);
+                    }}
+                    className="text-lg font-semibold text-slate-900 text-left"
+                  >
+                    {item}
+                  </button>
+                );
+              }
+              return (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase().replace(" ", "-")}`} 
+                  className="text-lg font-semibold text-slate-900"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setShowPlans(false);
+                  }}
+                >
+                  {item}
+                </a>
+              );
+            })}
             <button className="w-full bg-yellow-400 text-slate-900 py-4 rounded-xl font-bold">
               Avalie seu imóvel
             </button>
@@ -339,8 +665,8 @@ export default function App() {
               transition={{ delay: 0.2 }}
               className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]"
             >
-              Transformamos seu imóvel em um <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">ativo de alta performance.</span>
+              Transformamos seu imóvel em renda, <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-500">cuidamos de tudo, do início ao fim.</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -348,7 +674,7 @@ export default function App() {
               transition={{ delay: 0.3 }}
               className="text-xl text-slate-300 mb-10 max-w-lg leading-relaxed"
             >
-              Gestão profissional para aluguel de temporada com foco em rentabilidade, ocupação e experiência do hóspede.
+              Gestão completa de aluguel de temporada, com foco em rentabilidade, ocupação e experiência do hóspede, zero preocupação para o proprietário.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -359,9 +685,9 @@ export default function App() {
               <button className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-500 transition-all flex items-center justify-center">
                 Avalie seu imóvel <ArrowRight className="ml-2 w-5 h-5" />
               </button>
-              <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all">
+              <a href="#contato" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all">
                 Fale conosco
-              </button>
+              </a>
             </motion.div>
           </div>
 
@@ -728,9 +1054,44 @@ export default function App() {
               <button className="bg-slate-900 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-slate-800 transition-all shadow-xl">
                 Avalie seu imóvel
               </button>
-              <button className="bg-white/20 backdrop-blur-sm text-slate-900 px-10 py-5 rounded-full text-xl font-bold hover:bg-white/30 transition-all border border-black/5">
+              <a href="#contato" className="bg-white/20 backdrop-blur-sm text-slate-900 px-10 py-5 rounded-full text-xl font-bold hover:bg-white/30 transition-all border border-black/5">
                 Fale conosco
-              </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contato" className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col space-y-8">
+            <h4 className="text-slate-400 text-xs font-bold uppercase tracking-widest">Contato</h4>
+            <div className="space-y-6">
+              <a href="tel:+5521984520042" className="flex items-center group">
+                <div className="w-10 h-10 flex items-center justify-center text-yellow-500 mr-4 group-hover:scale-110 transition-transform">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <span className="text-xl md:text-2xl font-bold text-slate-700">+55 (21) 98452-0042</span>
+              </a>
+              <a href="mailto:info@nomad-e.club" className="flex items-center group">
+                <div className="w-10 h-10 flex items-center justify-center text-yellow-500 mr-4 group-hover:scale-110 transition-transform">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <span className="text-xl md:text-2xl font-bold text-slate-700">info@nomad-e.club</span>
+              </a>
+              <div className="flex items-center">
+                <div className="w-10 h-10 flex items-center justify-center text-yellow-500 mr-4">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <span className="text-xl md:text-2xl font-bold text-slate-700">Ipanema, Rio de Janeiro</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-10 h-10 flex items-center justify-center text-yellow-500 mr-4">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <span className="text-xl md:text-2xl font-bold text-slate-700">Meireles, Fortaleza</span>
+              </div>
             </div>
           </div>
         </div>
@@ -768,16 +1129,22 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-slate-400">Contato</h4>
               <div className="space-y-4 text-slate-600 font-semibold">
-                <a href="tel:+552199999999" className="flex items-center hover:text-yellow-600 transition-colors">
-                  <Phone className="w-5 h-5 mr-3 text-yellow-500" /> +55 21 9999-9999
+                <a href="tel:+5521984520042" className="flex items-center hover:text-yellow-600 transition-colors">
+                  <Phone className="w-5 h-5 mr-3 text-yellow-500" /> +55 (21) 98452-0042
                 </a>
-                <a href="mailto:hola@nomad-e.com" className="flex items-center hover:text-yellow-600 transition-colors">
-                  <Mail className="w-5 h-5 mr-3 text-yellow-500" /> hola@nomad-e.com
+                <a href="mailto:info@nomad-e.club" className="flex items-center hover:text-yellow-600 transition-colors">
+                  <Mail className="w-5 h-5 mr-3 text-yellow-500" /> info@nomad-e.club
                 </a>
-                <p className="flex items-start">
-                  <MapPin className="w-5 h-5 mr-3 text-yellow-500 shrink-0" />
-                  Ipanema, Rio de Janeiro
-                </p>
+                <div className="space-y-4">
+                  <p className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 text-yellow-500 shrink-0" />
+                    Ipanema, Rio de Janeiro
+                  </p>
+                  <p className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 text-yellow-500 shrink-0" />
+                    Meireles, Fortaleza
+                  </p>
+                </div>
               </div>
             </div>
           </div>
